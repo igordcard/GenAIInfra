@@ -8,7 +8,7 @@
 replicaCount: 1
 
 image:
-  repository: opea/chatqna:latest
+  repository: docker201904/chatqna:latest
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   # tag: "1.0"

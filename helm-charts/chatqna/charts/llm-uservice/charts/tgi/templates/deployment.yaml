@@ -47,6 +47,8 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: model-volume
+            - mountPath: /dev/shm
+              name: shared-memory
           ports:
             - name: http
               containerPort: {{ .Values.port }}
@@ -78,6 +80,10 @@ spec:
           hostPath:
             path: {{ .Values.volume }}
             type: Directory
+        - name: shared-memory
+          emptyDir:
+            medium: Memory
+            sizeLimit: 1Gi
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
